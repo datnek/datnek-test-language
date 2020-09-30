@@ -1,0 +1,55 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/Angular/datnek-angular/dist
+/Angular/datnek-angular/node_modules
+/Angular/datnek-angular/.idea
+
+
+# compiled output
+/Nodejs/sequelize-and-node/node_modules
+/Nodejs/sequelize-and-node/.idea
+
+
+# compiled output
+/Python/datnek-python/virtualenv
+/Python/datnek-python/.idea
+
+
+# IDE - VSCode
+/Asp.net core/Aspcore/.vscode/*
+/Asp.net core/Aspcore/!.vscode/settings.json
+/Asp.net core/Aspcore/!.vscode/tasks.json
+/Asp.net core/Aspcore/!.vscode/launch.json
+/Asp.net core/Aspcore/!.vscode/extensions.json
+/Asp.net core/Aspcore/.history/*
+
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db

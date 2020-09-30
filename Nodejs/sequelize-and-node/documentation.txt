@@ -1,0 +1,97 @@
+//morgan for best journalisation
+Cross-env lets us pass environment variables in npm scripts, which in this case we’ll use to specify a test environment
+
+npm i sequelize-auto -g
+npm install --save express body-parser sequelize
+jsonwebtoken dotenv uuid md5
+supertest sequelize-cli cross-env cors morgan mysql2
+ sqlite3 nodemon jest sequelize-mock coverage node-coverage
+
+https://levelup.gitconnected.com/building-an-express-api-with-sequelize-cli-and-unit-testing-882c6875ed59
+
+https://dev.to/dyarleniber/parallel-tests-in-node-js-with-jest-and-mongodb-without-mocking-4jj2
+
+//ORM and migrations
+https://sequelize.org/v5/manual/getting-started.html
+https://www.npmjs.com/package/sequelize-cli
+https://levelup.gitconnected.com/building-an-express-api-with-sequelize-cli-and-unit-testing-882c6875ed59
+https://sequelize.org/master/manual/getting-started.html
+https://dev.to/anayooleru/modifying-an-existing-sequelize-migration-1mnn
+https://withjavascript.mariuszrajczakowski.me/blog/tdd-a-restful-api-with-node-express-typescript-and-jest-part-1
+
+// Example sequelize used
+https://stackabuse.com/using-sequelize-js-and-sqlite-in-an-express-js-app/
+
+// Example crud
+https://grokonez.com/node-js/sequelize-orm-build-crud-restapis-with-nodejs-express-sequelize-mysql
+
+
+// cors
+http://expressjs.com/en/resources/middleware/cors.html
+
+// Jest unit test use sequelize
+https://jestjs.io/docs/en/getting-started
+https://medium.com/@kvr2277/sequelize-mocking-with-jest-and-node-933c1f439579
+https://bezkoder.com/sequelize-associate-one-to-many/#:~:text=Further%20Reading-,Sequelize%20One%2Dto%2DMany%20example%20Overview,only%20one%20element%20of%20A.
+//use sequelize
+$ sequelize db:migrate        # Run pending migrations.
+$ sequelize db:migrate:undo   # Revert the last migration run.
+$ sequelize help              # Display this help text.
+$ sequelize init              # Initializes the project.
+$ sequelize migration:create  # Generates a new migration file.
+$ sequelize version           # Prints the version number.
+
+sequelize init
+sequelize model:generate --name Language --attributes title:string,speak:float,understand:float,read:float
+
+npx sequelize-cli db:create
+sequelize db:migrate [--env production]
+sqlite3 database.sqlite3 //pour creer une base de données sqlite (c'est aussi simple de faire juste la migration
+sequelize seed:generate --name seed-language
+sequelize db:seed:all
+//sequelize migration:create --name rename_spreak_to_speak_on_table_language
+//sequelize migration:generate --name create_users_table
+
+nodemon server.js or npm start
+
+//run command to nodejs
+const { exec } = require("child_process");
+exec("ls -la", (error, stdout, stderr) => {
+    if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+    }
+    console.log(`stdout: ${stdout}`);
+});
+https://stackabuse.com/executing-shell-commands-with-node-js/
+https://zaiste.net/posts/nodejs-child-process-spawn-exec-fork-async-await/
+
+
+"storage": "./databases/database_test.sqlite3",
+    "dialect": "sqlite"
+
+  "test": {
+    "username":  "root",
+    "password":  "root",
+    "database": "database_test.sqlite",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+    "storage": ":memory:",
+    "operatorsAliases": false
+  },
+
+
+
+,
+    "pretest": "cross-env NODE_ENV=test npm run db:reset",
+    "db:create:test": "cross-env NODE_ENV=test  sequelize db:create",
+    "db:reset": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
+
+
+
+// method expect
+https://jestjs.io/docs/en/expect

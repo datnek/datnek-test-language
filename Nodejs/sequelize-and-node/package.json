@@ -1,0 +1,40 @@
+{
+  "name": "sequelize-and-node",
+  "version": "1.0.0",
+  "description": "sequelize nodejs mysql jest for unit test and sqlite",
+  "main": "server.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles --silent --forceExit --coverage ",
+    "test:watch": "cross-env NODE_ENV=test jest --coverage --runInBand --watch",
+    "start": "cross-env NODE_ENV=development  nodemon server.js",
+    "dev": "nodemon ./server.js localhost 3010"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "author": "Stratege takam",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "coverage": "^0.4.1",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jest": "^26.4.2",
+    "json-web-token": "^3.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.3.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.2.5",
+    "node-coverage": "^2.1.0",
+    "nodemon": "^2.0.4",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0",
+    "sequelize-mock": "^0.10.2",
+    "sqlite3": "^5.0.0",
+    "supertest": "^5.0.0",
+    "uuid": "^8.3.0"
+  }
+}
