@@ -1634,6 +1634,19 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "Aspcore/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Aspcore.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Aspcore.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -5640,10 +5653,16 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "Aspcore/1.0.0": {
+      "type": "project",
+      "path": "../Aspcore/Aspcore.csproj",
+      "msbuildProject": "../Aspcore/Aspcore.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Aspcore >= 1.0.0",
       "MSTest.TestAdapter >= 2.1.0",
       "MSTest.TestFramework >= 2.1.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
@@ -5679,7 +5698,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Enterprise\\Datnek-test-language\\Asp.net core\\Aspcore\\Aspcore\\Aspcore.csproj": {
+              "projectPath": "D:\\Enterprise\\Datnek-test-language\\Asp.net core\\Aspcore\\Aspcore\\Aspcore.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -5725,6 +5748,9 @@
           }
         ],
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
