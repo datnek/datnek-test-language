@@ -1,5 +1,4 @@
 using System;
-
 namespace Aspcore.Models
 {
     public class ErrorViewModel
