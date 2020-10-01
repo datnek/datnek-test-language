@@ -1,25 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Aspcore.Controllers;
-using Aspcore.Migrations;
+﻿using Aspcore.Migrations;
 using Aspcore.Models;
 using Aspcore.Services;
 using Aspcore.Tests.Provides;
 using Aspcore.Utils;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Aspcore.Tests.Controllers
+namespace Aspcore.Tests.services
 {
-    [TestClass]
-    public class LanguagesControllerUnitTest
-    {
-        private LanguagesController languagesController;
-        private Language language;
 
+    [TestClass]
+    public class LanguageServiceUnitTest
+    {
+        private LanguagesService languagesService;
+
+        private Language language;
 
 
         [TestCleanup]
@@ -34,7 +34,7 @@ namespace Aspcore.Tests.Controllers
         {
             // Arrange
             var datnekContext = await DatnekContextProvider.GetDatabaseContext();
-            var languagesService = new LanguagesService(datnekContext);
+            languagesService = new LanguagesService(datnekContext);
             var user = await GetUser(datnekContext);
             language = new Language()
             {
@@ -48,7 +48,6 @@ namespace Aspcore.Tests.Controllers
                 createdAt = DateTime.Now,
                 updatedAt = DateTime.Now
             };
-            languagesController = new LanguagesController(languagesService);
         }
 
         public async Task<User> GetUser(DatnekContext datnekContext)
@@ -65,56 +64,59 @@ namespace Aspcore.Tests.Controllers
             return await usersService.Create(user);
         }
 
+  
 
         [TestMethod]
-        public async void GetAll_count_1_and_status_200()
+        public async Task GetAll_LanguageAsync()
         {
-            var result = (OkObjectResult)(await languagesController.Create(language)).Result;
-            var l = (Language)result.Value;
-
             //Act
-            var result1 = (OkObjectResult)(await languagesController.GetAll()).Result;
-            var count = ((IList<Language>)result1.Value).Count();
+            var l = await languagesService.Create(language);
+            var count = (await languagesService.GetAll())?.Count();
 
+            //Assert
             Assert.AreEqual(1, count);
-            Assert.AreEqual(200, result.StatusCode);
         }
 
-      
-
 
         [TestMethod]
-        public async void PuttLanguage_with_valid_object_and_status_code_200()
+        public async Task Create_LanguageAsync()
         {
-            //Arrange 
-            var result = (OkObjectResult)(await languagesController.Create(language)).Result;
-            var l = (Language)result.Value;
+            //Act
+            var l = await languagesService.Create(language);
+
+            //Assert
+            Assert.AreNotEqual(0, l.id);
+        }
+
+        [TestMethod]
+        public async Task Update_LanguageAsync()
+        {
+            //Act
+            var l = await languagesService.Create(language);
+
             l.title = "fr";
             l.read = 5;
 
-            //Act
-            var item = (BadRequestObjectResult)(await languagesController.Update(l)).Result;
-            var l1 = (Language)item.Value;
-
-            Assert.AreEqual(l.title, l1.title);
-            Assert.AreEqual(l.read, l1.read);
-            Assert.AreEqual(200, item.StatusCode);
-        }
-
-
-
-        [TestMethod]
-        public async void PostLanguage_with_valid_object()
-        {
-            //Act
-            var result = (OkObjectResult)(await languagesController.Create(language)).Result;
-            var l = (Language)result.Value;
+            var l1 = await languagesService.Update(l);
 
             //Assert
-            Assert.AreEqual(language.title, l.title);
             Assert.AreNotEqual(0, l.id);
-            Assert.AreEqual(200, item.StatusCode);
+            Assert.AreEqual(l.read, l1.read);
+            Assert.AreEqual(l.title, l1.title);
         }
 
+        [TestMethod]
+        public async Task Delete_LanguageAsync()
+        {
+            //Act
+            var u = await languagesService.Create(language);
+
+            var u1 = await languagesService.Delete(u.id);
+            var count = (await languagesService.GetAll())?.Count();
+
+            //Assert
+            Assert.AreEqual(0, count);
+            Assert.AreNotEqual(0, u1.id);
+        }
     }
 }

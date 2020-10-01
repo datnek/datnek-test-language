@@ -4,17 +4,14 @@ using Aspcore.Tests.Provides;
 using Aspcore.Utils;
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Aspcore.Tests.Services
 {
     
     [TestClass]
-    public class usersServiceUnitTest
+    public class UserServiceUnitTest
     {
         private  UsersService usersService;
         private User user;
@@ -114,8 +111,10 @@ namespace Aspcore.Tests.Services
             var u = await usersService.Create(user);
 
             var u1 = await usersService.Delete(u.id);
+            var count = (await usersService.GetAll())?.Count();
 
             //Assert
+            Assert.AreEqual(0, count);
             Assert.AreNotEqual(0, u1.id);
         }
     }
