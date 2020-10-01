@@ -1,5 +1,5 @@
 ﻿using Aspcore.Models;
-using Aspcore.Tests.Utils;
+using Aspcore.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -23,14 +23,17 @@ namespace Aspcore.Tests.Models
                 slug = "123",
                 username = "stratege",
                 email = "danick.takam@datnek.be",
-                password = "password"
+                password = "password",
+                createdAt =  DateTime.Now,
+                updatedAt =  DateTime.Now,
+                languages = new List<Language>()
             };
 
             //Act
-            var errors =  user.CheckPropertyValidation();
+            var isValid =  user.IsValid();
 
             //Asserts
-            Assert.AreEqual(0, errors.Count());
+            Assert.IsTrue(isValid);
         }
 
 
@@ -40,22 +43,19 @@ namespace Aspcore.Tests.Models
             //Arrange
             User user = new User()
             {
-                id = 0
+               
             };
 
             //Act
-            var errors = user.CheckPropertyValidation();
+            var errors = user.GetMembers();
+            var isValid = user.IsValid();
 
             //Asserts
-            Assert.AreNotEqual(0, errors.Count());
-            var slug = ValidEntity.CheckPropertyValidation(user).ElementAt(0).MemberNames.ElementAt(0);
-            Assert.AreEqual("slug", slug);
-            var username = ValidEntity.CheckPropertyValidation(user).ElementAt(1).MemberNames.ElementAt(0);
-            Assert.AreEqual("username", slug);
-            var email = ValidEntity.CheckPropertyValidation(user).ElementAt(2).MemberNames.ElementAt(0);
-            Assert.AreEqual("email", slug);
-            var password = ValidEntity.CheckPropertyValidation(user).ElementAt(3).MemberNames.ElementAt(0);
-            Assert.AreEqual("password", slug);
+            Assert.IsFalse(isValid);
+            Assert.IsTrue(errors.Contains("slug"));
+            Assert.IsTrue(errors.Contains("email"));
+            Assert.IsTrue(errors.Contains("username"));
+            Assert.IsTrue(errors.Contains("password"));
 
         }
     }

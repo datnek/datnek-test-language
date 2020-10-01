@@ -7,19 +7,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Aspcore.Tests.Provides
 {
-    public class TestContextProvider : ITestContextProvider
+    public class DatnekContextProvider
     {
-        private DatnekContext _datnekContext;
 
-        public async Task<DatnekContext> GetDatabaseContext()
+        public static async Task<DatnekContext> GetDatabaseContext()
         {
 
             var options = new DbContextOptionsBuilder<DatnekContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
-            _datnekContext = new DatnekContext(options);
-            _datnekContext.Database.EnsureCreated();
-            return await Task.Run(() => _datnekContext);
+            var phonebookContext = new DatnekContext(options);
+
+            return await Task.Run(() => phonebookContext);
         }
+
     }
 }

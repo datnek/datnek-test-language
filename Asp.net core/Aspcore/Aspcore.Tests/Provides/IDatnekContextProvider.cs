@@ -6,7 +6,7 @@ using Aspcore.Migrations;
 
 namespace Aspcore.Tests.Provides
 {
-    public interface ITestContextProvider
+    public interface IDatnekContextProvider
     {
         Task<DatnekContext> GetDatabaseContext();
     }
