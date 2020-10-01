@@ -32,6 +32,10 @@ namespace Aspcore.Services
         }
         public async Task<User> Create(User user)
         {
+            user.createdAt = DateTime.Now;
+            user.updatedAt = DateTime.Now;
+            user.slug = Guid.NewGuid().ToString();
+
             if (user.IsValid())
             {
                 try
@@ -83,10 +87,14 @@ namespace Aspcore.Services
 
         public async Task<User> Update(User user)
         {
+            user.updatedAt = DateTime.Now;
+
             if (user.IsValid())
             {
                 try
                 {
+                    // you can check password before save. if is new password we hash it
+                    user.password = user.password.Hash();
                     context.Users.Update(user);
                     await context.SaveChangesAsync();
                     return user;
@@ -100,7 +108,7 @@ namespace Aspcore.Services
             throw new Exception(user.Errors());
         }
 
-            public async Task<User> Authenticate(string username, string password)
+       public async Task<User> Authenticate(string username, string password)
             {
                 password = password.Hash();
 

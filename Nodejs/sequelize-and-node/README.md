@@ -37,7 +37,7 @@ npm init
 - Installer les dépendances nécessaires
 
 ```bash
-npm install --save express body-parser sequelize jsonwebtoken dotenv uuid md5 supertest sequelize-cli cross-env cors morgan mysql2 nodemon jest coverage node-coverage
+npm install --save express body-parser sequelize jsonwebtoken dotenv uuid md5 supertest sequelize-cli cross-env cors morgan mysql2 nodemon jest coverage node-coverage typescript ts-node @types/express @types/node
 ```
 - [x] **express**: pour le routage 
 - [x] **body-parser**: faciliter le mappage des données   

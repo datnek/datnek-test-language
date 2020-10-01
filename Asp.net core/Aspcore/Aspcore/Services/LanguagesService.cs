@@ -20,6 +20,10 @@ namespace Aspcore.Services
 
         public async Task<Language> Create(Language language)
         {
+            language.createdAt = DateTime.Now;
+            language.updatedAt = DateTime.Now;
+            language.slug = Guid.NewGuid().ToString();
+
             if (language.IsValid())
             {
                 try
@@ -60,6 +64,8 @@ namespace Aspcore.Services
 
         public async Task<Language> Update(Language language)
         {
+            language.updatedAt = DateTime.Now;
+
             if (language.IsValid())
             {
                 try

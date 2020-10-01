@@ -1,11 +1,12 @@
 //morgan for best journalisation
 Cross-env lets us pass environment variables in npm scripts, which in this case we’ll use to specify a test environment
-
+http://rsseau.fr/en/programming/2019/06/19/express-typescript.html
 npm i sequelize-auto -g
 npm install --save express body-parser sequelize
 jsonwebtoken dotenv uuid md5
 supertest sequelize-cli cross-env cors morgan mysql2
  sqlite3 nodemon jest sequelize-mock coverage node-coverage
+ typescript ts-node @types/express @types/node
 
 https://levelup.gitconnected.com/building-an-express-api-with-sequelize-cli-and-unit-testing-882c6875ed59
 

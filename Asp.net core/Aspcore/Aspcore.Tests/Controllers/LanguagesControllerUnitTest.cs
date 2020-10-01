@@ -21,7 +21,6 @@ namespace Aspcore.Tests.Controllers
         private Language language;
 
 
-
         [TestCleanup]
         public void testClean()
         {
@@ -67,13 +66,13 @@ namespace Aspcore.Tests.Controllers
 
 
         [TestMethod]
-        public async void GetAll_count_1_and_status_200()
+        public async Task GetAll_Language_count_1_and_status_200()
         {
-            var result = (OkObjectResult)(await languagesController.Create(language)).Result;
+            var result = (OkObjectResult) await languagesController.Create(language);
             var l = (Language)result.Value;
 
             //Act
-            var result1 = (OkObjectResult)(await languagesController.GetAll()).Result;
+            var result1 = (OkObjectResult) await languagesController.GetAll();
             var count = ((IList<Language>)result1.Value).Count();
 
             Assert.AreEqual(1, count);
@@ -84,16 +83,16 @@ namespace Aspcore.Tests.Controllers
 
 
         [TestMethod]
-        public async void PuttLanguage_with_valid_object_and_status_code_200()
+        public async Task Put_Language_with_valid_object_and_status_code_200()
         {
             //Arrange 
-            var result = (OkObjectResult)(await languagesController.Create(language)).Result;
+            var result = (OkObjectResult) await languagesController.Create(language);
             var l = (Language)result.Value;
             l.title = "fr";
             l.read = 5;
 
             //Act
-            var item = (BadRequestObjectResult)(await languagesController.Update(l)).Result;
+            var item = (OkObjectResult) await languagesController.Update(l.id, l);
             var l1 = (Language)item.Value;
 
             Assert.AreEqual(l.title, l1.title);
@@ -104,15 +103,29 @@ namespace Aspcore.Tests.Controllers
 
 
         [TestMethod]
-        public async void PostLanguage_with_valid_object()
+        public async Task Post_Language_with_valid_object()
         {
             //Act
-            var result = (OkObjectResult)(await languagesController.Create(language)).Result;
+            var result = (OkObjectResult) await languagesController.Create(language);
             var l = (Language)result.Value;
 
             //Assert
             Assert.AreEqual(language.title, l.title);
             Assert.AreNotEqual(0, l.id);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+
+        [TestMethod]
+        public async Task Delete_Language()
+        {
+
+            var result = (OkObjectResult) await languagesController.Create(language);
+            var l = (Language)result.Value;
+
+            //Act
+            var item = (OkObjectResult) await languagesController.Delete(l.id);
+
+            //Assert
             Assert.AreEqual(200, item.StatusCode);
         }
 
