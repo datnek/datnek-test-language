@@ -25,10 +25,7 @@ namespace Aspcore
         {
             services.AddControllersWithViews();
 
-            // services.AddDbContext<FdContext>(ServiceLifetime.Transient);
-            services.AddDbContext<FdContext>
-                (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
-
+         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

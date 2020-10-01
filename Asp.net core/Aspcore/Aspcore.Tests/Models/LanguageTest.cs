@@ -23,7 +23,8 @@ namespace Aspcore.Tests.Models
                 title = "en",
                 speak = 2,
                 read = 3,
-                understand = 2
+                understand = 2,
+                userId = 1,
             };
 
             //Act
@@ -56,8 +57,10 @@ namespace Aspcore.Tests.Models
             Assert.AreEqual("speak", speak);
             var read = ValidEntity.CheckPropertyValidation(language).ElementAt(3).MemberNames.ElementAt(0);
             Assert.AreEqual("read", read);
-            var understand = ValidEntity.CheckPropertyValidation(language).ElementAt(3).MemberNames.ElementAt(0);
+            var understand = ValidEntity.CheckPropertyValidation(language).ElementAt(4).MemberNames.ElementAt(0);
             Assert.AreEqual("understand", understand);
+            var userId = ValidEntity.CheckPropertyValidation(language).ElementAt(5).MemberNames.ElementAt(0);
+            Assert.AreEqual("userId", userId);
         }
     }
 }
