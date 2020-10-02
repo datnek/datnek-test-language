@@ -1,7 +1,3 @@
-'use strict';
-
-
-
 module.exports = (db) => {
 
     const uuidv4 = require('uuid').v4();
@@ -12,7 +8,7 @@ module.exports = (db) => {
         async findAll(req, res) {
             try {
                 const languages = await Language.findAll({ include: ["user"] });
-               // console.log("languages", languages);
+                // console.log("languages", languages);
                 return res.json(languages);
             } catch (err) {
                 console.log('There was an error querying languages', err);
@@ -22,14 +18,14 @@ module.exports = (db) => {
 
         async findById(req, res) {
             try {
-               /* const [language] = await Language.findAll({
-                    limit: 1,
-                    where: {
-                        id: req.params.id
-                        //your where conditions, or without them if you need ANY entry
-                    },
-                    order: [ [ 'createdAt', 'DESC' ]]
-                }); */
+                /* const [language] = await Language.findAll({
+                     limit: 1,
+                     where: {
+                         id: req.params.id
+                         //your where conditions, or without them if you need ANY entry
+                     },
+                     order: [ [ 'createdAt', 'DESC' ]]
+                 }); */
 
                 const language = await Language.findOne({ where: { id: req.params.id }, include: ["user"] });
                 return res.json(language);
@@ -59,7 +55,7 @@ module.exports = (db) => {
 
         async put(req, res) {
             try {
-               // console.log('db', Language);
+                // console.log('db', Language);
                 const language = await Language.findByPk(parseInt(req.params.id));
                 const newlanguage = {
                     title: req.body.title,
@@ -93,5 +89,5 @@ module.exports = (db) => {
         }
     }
 
-   return  new LanguageController();
+    return  new LanguageController();
 };

@@ -2,11 +2,9 @@
 Cross-env lets us pass environment variables in npm scripts, which in this case we’ll use to specify a test environment
 http://rsseau.fr/en/programming/2019/06/19/express-typescript.html
 npm i sequelize-auto -g
-npm install --save express body-parser sequelize
-jsonwebtoken dotenv uuid md5
-supertest sequelize-cli cross-env cors morgan mysql2
- sqlite3 nodemon jest sequelize-mock coverage node-coverage
- typescript ts-node @types/express @types/node
+npm install -g sequelize
+npm i -g sequelize-cli
+npm install --save express body-parser  jsonwebtoken dotenv uuid md5 supertest  cross-env cors morgan mysql2 sqlite3 nodemon jest sequelize-mock coverage node-coverage typescript ts-node @types/express @types/node sequelize sequelize-cli
 
 https://levelup.gitconnected.com/building-an-express-api-with-sequelize-cli-and-unit-testing-882c6875ed59
 
@@ -96,3 +94,16 @@ https://zaiste.net/posts/nodejs-child-process-spawn-exec-fork-async-await/
 
 // method expect
 https://jestjs.io/docs/en/expect
+
+
+http://rsseau.fr/en/programming/2019/06/19/express-typescript.html
+
+https://www.npmjs.com/package/sequelize-cli-typescript
+npm install -g sequelize-cli-typescript
+npm install -g sequelize-typescript-generator
+
+https://www.npmjs.com/package/sequelize-typescript-generator
+npm install -S typescript @types/node @types/validator @types/bluebird reflect-metadata sequelize sequelize-typescript
+npm install -g npx
+
+http://rsseau.fr/en/programming/2019/06/19/express-typescript.html

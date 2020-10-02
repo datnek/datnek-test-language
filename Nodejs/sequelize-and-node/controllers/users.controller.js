@@ -10,7 +10,7 @@ module.exports = (db,authGrade) => {
         async findAll(req, res) {
             try {
                 const users = await User.findAll({ include: ["languages"] });
-               // console.log("users", users);
+                // console.log("users", users);
                 return res.json(users);
             } catch (err) {
                 console.log('There was an error querying users', err);
@@ -20,14 +20,14 @@ module.exports = (db,authGrade) => {
 
         async findById(req, res) {
             try {
-               /* const [user] = await User.findAll({
-                    limit: 1,
-                    where: {
-                        id: req.params.id
-                        //your where conditions, or without them if you need ANY entry
-                    },
-                    order: [ [ 'createdAt', 'DESC' ]]
-                }); */
+                /* const [user] = await User.findAll({
+                     limit: 1,
+                     where: {
+                         id: req.params.id
+                         //your where conditions, or without them if you need ANY entry
+                     },
+                     order: [ [ 'createdAt', 'DESC' ]]
+                 }); */
 
                 const user = await User.findOne({ where: { id: req.params.id }, include: ["languages"] });
                 return res.json(user);
@@ -55,7 +55,7 @@ module.exports = (db,authGrade) => {
 
         async put(req, res) {
             try {
-               // console.log('db', User);
+                // console.log('db', User);
                 const user = await User.findByPk(parseInt(req.params.id));
                 const newuser = {
                     slug: req.body.slug,
@@ -92,5 +92,5 @@ module.exports = (db,authGrade) => {
         }
     }
 
-   return  new UserController();
+    return  new UserController();
 };
