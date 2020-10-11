@@ -4,11 +4,13 @@
 /Angular/datnek-angular/dist
 /Angular/datnek-angular/node_modules
 /Angular/datnek-angular/.idea
+/Angular/datnek-angular/coverage
 
 
 # compiled output
 /Nodejs/sequelize-and-node/node_modules
 /Nodejs/sequelize-and-node/.idea
+/Nodejs/sequelize-and-node/coverage
 
 
 # compiled output
@@ -23,6 +25,7 @@
 /Asp.net core/Aspcore/!.vscode/launch.json
 /Asp.net core/Aspcore/!.vscode/extensions.json
 /Asp.net core/Aspcore/.history/*
+/Asp.net core/Aspcore/coverage
 
 /.idea
 .project
